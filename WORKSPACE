@@ -10,10 +10,13 @@ http_archive(
 )
 
 http_archive(
-  name='com_google_protobuf',
-  sha256='9510dd2afc29e7245e9e884336f848c8a6600a14ae726adb6befdb4f786f0be2',
-  strip_prefix='protobuf-3.6.1.3',
-  urls=['https://github.com/protocolbuffers/protobuf/archive/v3.6.1.3.zip'],
+  name='rules_proto',
+  sha256='57001a3b33ec690a175cdf0698243431ef27233017b9bed23f96d44b9c98242f',
+  strip_prefix='rules_proto-9cd4f8f1ede19d81c6d48910429fe96776e567b1',
+  urls=[
+    'https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/9cd4f8f1ede19d81c6d48910429fe96776e567b1.tar.gz',
+    'https://github.com/bazelbuild/rules_proto/archive/9cd4f8f1ede19d81c6d48910429fe96776e567b1.tar.gz',
+  ],
 )
 
 load('@io_bazel_rules_scala//scala:scala.bzl', 'scala_repositories')
@@ -26,8 +29,12 @@ scala_repositories((scala_version, {
 load('@io_bazel_rules_scala//scala:toolchains.bzl', 'scala_register_toolchains')
 scala_register_toolchains()
 
-load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scala_proto_repositories")
+load('@io_bazel_rules_scala//scala_proto:scala_proto.bzl', 'scala_proto_repositories')
 scala_proto_repositories(scala_version=scala_version)
 
-load("@io_bazel_rules_scala//scala_proto:toolchains.bzl", "scala_proto_register_toolchains")
+load('@io_bazel_rules_scala//scala_proto:toolchains.bzl', 'scala_proto_register_toolchains')
 scala_proto_register_toolchains()
+
+load('@rules_proto//proto:repositories.bzl', 'rules_proto_dependencies', 'rules_proto_toolchains')
+rules_proto_dependencies()
+rules_proto_toolchains()
