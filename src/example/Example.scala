@@ -1,7 +1,7 @@
 package example
 
-import example.Protos
+import example.person.Person
 
 object Example extends App {
-  val Me = new Protos.Person()
+  val Me = new Person()
 }
