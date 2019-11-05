@@ -1,7 +1,7 @@
-package adu.example
+package example
 
-import adu.protobuf.Protos
+import example.Protos
 
 object Example extends App {
-  val Me = Protos.Person()
+  val Me = new Protos.Person()
 }
