@@ -16,8 +16,6 @@ Build timestamp as int: 1563549770
 
 ### Build command
 
-For this version of `bazel` and the `WORKSPACE` in its current state, I have to enable a few deprecations. Very possible some version bumps throughout would alleviate the complexity here.
-
 ```bash
 bazel build //src/example
 ```
